@@ -1,17 +1,22 @@
 package org.yemekler.reactiv;
 
 
+import org.slf4j.Logger;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import reactor.core.publisher.Flux;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 
-
-import java.util.Arrays;
 
 @SpringBootApplication
 public class ReactivApplication {
 
     public static void main(String[] args) {
-        System.out.println("başlangıç");
+        SpringApplication.run(ReactivApplication.class, args);
 
-    }}
+
+    }
+}
