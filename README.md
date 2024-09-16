@@ -6,8 +6,6 @@ Bilgilendirme Notu: Çoğu ayar geleneksel programlamaya göre farklıdır. Bura
 
 Docker komutu:
 
-bash
-Kodu kopyala
     docker run -p 3306:3306 -d -e MYSQL_USER=uzay -e MYSQL_PASSWORD=12345 -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=12345 mysql:latest
 Root şifresini vermeyi unutmayın!
 
