@@ -1,25 +1,20 @@
-En dikkat edilmesi gerekenler Controller ve Service sınıfında hata yönetiminin genelde diğerinden farklı olarak service sınıfında yapılması şart olmasada genelde böyle olur.
-SPRİNG İO'DA OLMAYAN AMA ELLE EKLEMEN GEREKEN MYSQL'İN REACTİVE DEPENENCYSİ
-NORMAL MYSQL DE OLMALI YANİ HEM NORMALİ HEMDE REACTİVE OLMALI
+En dikkat edilmesi gerekenler: Controller ve Service sınıflarında hata yönetimi genelde farklıdır. Service sınıfında hata yönetimi genellikle yapılması gereken bir durumdur, ancak şart değildir.
 
-Bilgilendirme Notu
-Çoğu ayarı geleneksel programlamaya göre farklıdır.
-Burada tablolar otomatik oluşmaz sql kodu yazarız bunun için flyfaw migration ekledik
-Burada entity anotasyonu olmadığı için sql kodu yazacağız
-@Generatedvalue anotasyonuda olmadığı için sql yazarken auto increment ayarıda ekle
-Ayrıca burada @ID @Table gibi anotasyonlar mevcuttur ve kullanıcaz.
-Yine repository'de jpa ile extends değil reactivecrudile extends edeceğiz
+Spring'de Olmayan Ama Elle Eklenmesi Gereken MySQL'in Reactive Bağımlılığı: Normal MySQL bağımlılığı da olmalıdır; yani hem normal hem de reactive bağımlılıklar bulunmalıdır.
 
+Bilgilendirme Notu: Çoğu ayar geleneksel programlamaya göre farklıdır. Burada tablolar otomatik olarak oluşmaz; SQL kodu yazarız. Bunun için Flyway migration ekledik. Burada entity anotasyonu olmadığı için SQL kodu yazacağız. Ayrıca, @GeneratedValue anotasyonu da olmadığı için SQL yazarken auto increment ayarını da eklemelisiniz. Ayrıca, burada @Id ve @Table gibi anotasyonlar mevcuttur ve kullanacağız. Repository'de JPA ile extends yerine Reactive CRUD ile extends edeceğiz.
+
+Docker komutu:
+
+bash
+Kodu kopyala
     docker run -p 3306:3306 -d -e MYSQL_USER=uzay -e MYSQL_PASSWORD=12345 -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=12345 mysql:latest
+Root şifresini vermeyi unutmayın!
 
-root password vermeyi unutma !
+Flyway İçin SQL Kodlarını Yazacağınız Klasörün Konumu: resources içinde db klasörü altında migration klasörüne koyun. SQL dosyalarının adlandırma kurallarına dikkat etmek gerekecektir. Dosya adları ad sırasına göre alfabetik olabilir; bu nedenle 1, 2, 3, 4, 5 gibi numaralandırmalar yapabiliriz.
 
-FLYWAY İÇİN SQL KODLARINI YAZACAĞIN KLASÖRÜN KONUMU
-    resources içinde db klasörü içinde migration klasörüne koy 
-Burada sql'in adlandırma kurallarına dikkat etmek gerekecektir
-Ad sırasına göre alfabetik olabilir böyle çalıştığı için 1 2 3 4 5 gibi yaparız.
+Mono ve Flux Kullanımı:
 
-
-    maksimum Bir kullanıcı dönme ihtimali varsa mono 
-    çok kullanıcı döndürme ihtimali varsa flux kullandık
-Servis Sınıfı Ve Controller Sınıfına Dikkat Bunlara Gelmeden Önce Kendi Hata Sınıfımı Oluşturmam Gerekiyor (Kendi Hata Sınıfımız)
+    Maksimum bir kullanıcı dönme ihtimali varsa Mono kullanılır.
+    Çok kullanıcı dönme ihtimali varsa Flux kullanılır.
+Servis Sınıfı ve Controller Sınıfı Dikkati: Bu sınıflara gelmeden önce kendi hata sınıfınızı oluşturmanız gerekmektedir.
