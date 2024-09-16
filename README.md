@@ -10,16 +10,16 @@ Burada entity anotasyonu olmadığı için sql kodu yazacağız
 Ayrıca burada @ID @Table gibi anotasyonlar mevcuttur ve kullanıcaz.
 Yine repository'de jpa ile extends değil reactivecrudile extends edeceğiz
 
-docker run -p 3306:3306 -d -e MYSQL_USER=uzay -e MYSQL_PASSWORD=12345 -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=12345 mysql:latest
+    docker run -p 3306:3306 -d -e MYSQL_USER=uzay -e MYSQL_PASSWORD=12345 -e MYSQL_DATABASE=mydb -e MYSQL_ROOT_PASSWORD=12345 mysql:latest
 
 root password vermeyi unutma !
 
 FLYWAY İÇİN SQL KODLARINI YAZACAĞIN KLASÖRÜN KONUMU
-resources içinde db klasörü içinde migration klasörüne koy 
+    resources içinde db klasörü içinde migration klasörüne koy 
 Burada sql'in adlandırma kurallarına dikkat etmek gerekecektir
 Ad sırasına göre alfabetik olabilir böyle çalıştığı için 1 2 3 4 5 gibi yaparız.
 
 
     maksimum Bir kullanıcı dönme ihtimali varsa mono 
-çok kullanıcı döndürme ihtimali varsa flux kullandık
+    çok kullanıcı döndürme ihtimali varsa flux kullandık
 Servis Sınıfı Ve Controller Sınıfına Dikkat Bunlara Gelmeden Önce Kendi Hata Sınıfımı Oluşturmam Gerekiyor (Kendi Hata Sınıfımız)
